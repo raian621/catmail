@@ -6,13 +6,14 @@ labels: enhancement
 assignees: raian621
 
 ---
+
 # Feature Request
 
 ## User Story
 
 As a \<user\>
 I need \<some function/feature\>
-So that <some benefit>
+So that \<some benefit>
 
 ## Assumptions and Details
 
