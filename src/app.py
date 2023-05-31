@@ -1,4 +1,5 @@
 from flask import Flask, Response, request
+from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from os import path, environ
 import json
@@ -30,7 +31,11 @@ if APP_SHOULD_EXIT:
   exit(1)
 
 app = Flask(__name__)
+db = None
 
+def connect_to_db(db_URI):
+  app.config['SQLALCHEMY_DATABASE_URI'] = db_URI
+  db = SQLAlchemy(app)
 
 @app.route('/', methods=['GET'])
 def home():

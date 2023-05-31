@@ -17,3 +17,15 @@ class APITest(TestCase):
     """ Test a simple POST request """
     result = self.client.post('/')
     self.assertEqual(result.status_code, HTTP_200_OK)
+
+  def test_create_email_template(self):
+    """ Test the creation of an email template """
+    pass
+
+  def test_handle_name_collisions(self):
+    """ Test the email template name collision handling """
+    pass
+
+  def test_upload_email_template(self):
+    """ Test the /upload API route """
+    pass
