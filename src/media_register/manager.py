@@ -4,11 +4,14 @@ class Manager:
     self.redis_config = redis_config
     self.sql_config = sql_config
 
-  def create(self, media_name, API_user):
+  def create(self, name, API_user):
     pass
 
-  def rebuild(self, media_name, API_user):
+  def upload(self, name, API_user, chunk, chunk_number):
     pass
 
-  def register(self, media_name, API_user):
+  def rebuild(self, name, API_user):
+    pass
+
+  def register(self, name, API_user):
     pass

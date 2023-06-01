@@ -1,34 +1,10 @@
-from flask import Flask, Response, request
+from flask import Flask, Response, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from os import path, environ
 import json
 
-APP_SHOULD_EXIT = False
-
-dotenv_path = path.join(path.dirname(__file__), '.env')
-load_dotenv(dotenv_path)
-def check_environment_variables():
-  required_env_vars = [
-    'EMAIL_ADDRESS',
-    'EMAIL_PASSWORD',
-    'SMTP_PORT',
-    'SMTP_HOST',
-    'DB_USERNAME',
-    'DB_PASSWORD',
-    'DB_HOSTNAME',
-    'DB_PORT'
-  ]
-  for var in required_env_vars:
-    if var not in environ.keys():
-      global APP_SHOULD_EXIT
-      APP_SHOULD_EXIT = True
-      print(f'[CONFIG ERROR] Required environment variable \'{var}\' not defined.')
-check_environment_variables()
-
-if APP_SHOULD_EXIT:
-  print('ERROR(S) occurred, exiting program...')
-  exit(1)
+import load_config
 
 app = Flask(__name__)
 db = None
@@ -65,3 +41,8 @@ def send_to():
       'body': body
     }
   ), content_type='application/json')
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+  # return Response('Hello', status=200)
+  return render_template('admin/login.html')
