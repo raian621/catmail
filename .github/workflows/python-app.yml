@@ -16,7 +16,19 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    # define required environment variables so that GitHub Actions can build
+    # the application :)
+    env:
+      REDIS_URI: localhost
+      REDIS_PORT: 6379
+      DB_PROVIDER: postgres
+      DB_URI: localhost
+      DB_PORT: 5432
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: admin
+      HOST: localhost
+      PORT: 8532
+    
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
